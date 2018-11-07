@@ -1,0 +1,21 @@
+<div class="container">
+<%= simple_form_for(@restaurant) do |f| %>
+  <% if @restaurant.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @restaurant.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class= "form-inline">
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :phone_number %>
+  <%= f.select :category, options_for_select(Restaurant::CATEGORIES) %>
+  <%= f.submit "add a restaurant", class: "btn btn-primary" %>
+  </div>
+  <%= link_to "Back to main page", restaurants_path, class: "btn btn-danger" %>
+<% end %>
+</div>
